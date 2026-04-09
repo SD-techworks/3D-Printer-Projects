@@ -7,6 +7,7 @@ This section is for useful macro files that support printer setup, maintenance, 
 ## Current files
 
 - `FLSUN S1 Start Purge.txt`
+- [Mainsail Config and Macros Basics](./Mainsail-Config-and-Macros.md)
 
 ## Recommended macro notes
 
