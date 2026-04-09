@@ -1,16 +1,8 @@
-# FLSUN S1 Hardware
+# FLSUN S1 Materials List
 
-Effector, mainboard, toolhead, and other hardware upgrade parts for the FLSUN S1.
+This build list covers the main parts, wiring, and hardware needed for this FLSUN S1 hardware setup.
 
-## Included files
-
-- `Effector mount.stl`
-- `Lower Ring Duct.stl`
-- `Upper Duct.stl`
-
-## Materials Needed
-
-### Main components
+## Main components
 
 - Extruder: Orbiter Extruder 2.5 - [Amazon](https://a.co/d/09Zf34c5)
 - Hotend: Rapido 2 Plus UHF - [Amazon](https://a.co/d/0d1dKH6t)
@@ -19,14 +11,14 @@ Effector, mainboard, toolhead, and other hardware upgrade parts for the FLSUN S1
   Note: An LED fan is suggested.
 - LED light: 5 mm 5V LED with the required resistor
 
-### Wiring
+## Wiring
 
 - 100 cm stepper extension harness - [Amazon](https://a.co/d/0ihOfzqw)
 - 2-pin connectors - [Amazon](https://a.co/d/03JpL7Of)
 - 6x 36 inch 22 AWG wires
 - Optional: 6-pin wire harness - [Amazon](https://a.co/d/0hXlCq0r)
 
-### Hardware
+## Hardware
 
 - 6x M3 brass heat inserts
 - 2x M3 x 20 mm screws
@@ -39,11 +31,3 @@ Effector, mainboard, toolhead, and other hardware upgrade parts for the FLSUN S1
   Note: Extruder to mount.
 - 1x M3 x 4 mm screw
   Note: Lower duct rear mount tab.
-
-For the full build list, see [Materials-List.md](./Materials-List.md).
-
-## Notes
-
-- Review the STL names carefully before printing so you pick the right part
-- Add hardware, fitment, and install notes here as the project grows
-- If you later add CAD or STEP files, place them in clearly named folders
