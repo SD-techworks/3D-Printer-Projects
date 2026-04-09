@@ -19,6 +19,9 @@ Hardware conversions, mounts, ducts, and other printer-specific upgrade parts.
 ### [macros](./macros)
 Klipper and printer workflow macros that are ready to review and use.
 
+### [Calibrations](./Calibrations)
+Step-by-step calibration guides for common Klipper tuning tasks.
+
 ## Download tips
 
 - Open the folder for the project you want
