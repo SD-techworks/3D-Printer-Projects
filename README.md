@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/sdobbins-tech-banner-final.svg" alt="sdobbins-tech banner" width="100%">
+  <img src="./assets/sdobbins-tech-banner-final.png" alt="sdobbins-tech banner" width="100%">
 </p>
 
 # 3D Printer Projects and Upgrades
