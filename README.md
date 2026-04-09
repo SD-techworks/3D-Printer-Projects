@@ -33,29 +33,6 @@ Step-by-step calibration guides for common Klipper tuning tasks.
 - Check compatibility notes for your printer model before downloading files
 - Prefer the newest or recommended file if multiple versions are included
 
-## Recommended project layout
-
-Each project works best when it includes a small README and grouped files:
-
-```text
-Category/Project-Name/
-  README.md
-  images/
-  cad/
-  stl/
-  step/
-  3mf/
-  configs/
-```
-
-Only use the folders that make sense for that project.
-
-## Contributing
-
-If you want to add another project, keep the folder name clear and include enough notes that someone else can understand what the files are for.
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for the preferred structure and upload checklist.
-
 ## License
 
 This repository currently uses the MIT License. If a project is based on someone else's work, include credit and source information in that project's README.
