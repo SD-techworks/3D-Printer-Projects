@@ -2,6 +2,8 @@
 
 Effector, mainboard, toolhead, and other hardware upgrade parts for the FLSUN S1.
 
+![FLSUN S1 hardware overview](./images/flsun-s1-parts-banner.png)
+
 ## Included files
 
 - `Effector mount.stl`

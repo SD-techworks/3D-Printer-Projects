@@ -14,7 +14,7 @@ This section is for printer-specific mechanical or hardware changes such as:
 ### [FLSUN S1](./FLSUN%20S1)
 Effector, toolhead, and other hardware upgrade parts for the FLSUN S1.
 
-## What each conversion folder should include
+## What each hardware folder should include
 
 - A short `README.md`
 - Compatible printer model
