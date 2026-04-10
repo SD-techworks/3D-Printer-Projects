@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sdobbins-tech | 3D Printing Projects</title>
+  <meta name="description" content="3D printer hardware upgrades, macros, and calibration guides from sdobbins-tech.">
+  <style>
+    :root {
+      --bg: #15181c;
+      --bg-soft: #20252b;
+      --panel: #272d34;
+      --panel-2: #303740;
+      --text: #f3f5f7;
+      --muted: #b7c0c8;
+      --line: rgba(255, 255, 255, 0.1);
+      --accent: #f06d12;
+      --accent-2: #4fd1ea;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(79, 209, 234, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(240, 109, 18, 0.1), transparent 25%),
+        linear-gradient(180deg, #1b1f24 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(21, 24, 28, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #ff9442);
+      box-shadow: 0 0 24px rgba(240, 109, 18, 0.55);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 36px 0 28px;
+    }
+
+    .hero-banner {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 28px;
+      margin-top: 30px;
+      align-items: start;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #ff9544);
+      color: white;
+      border-color: transparent;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel h2 {
+      margin: 0 0 16px;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-list strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    .hero-list span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.15rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56ch;
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(48, 55, 64, 0.92), rgba(39, 45, 52, 0.92));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .card-media {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(240, 109, 18, 0.15), rgba(79, 209, 234, 0.15));
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .card-link {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .simple-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .mini-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 26px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(240, 109, 18, 0.12), rgba(79, 209, 234, 0.08)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .callout h2 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+    }
+
+    .callout p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .footer {
+      padding: 36px 0 52px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-copy,
+      .feature-grid,
+      .simple-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .hero-panel,
+      .card-body,
+      .mini-card,
+      .callout {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span>sdobbins-tech</span>
+      </div>
+      <div class="nav-links">
+        <a href="#hardware">Hardware</a>
+        <a href="#calibrations">Calibrations</a>
+        <a href="#macros">Macros</a>
+        <a href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section class="hero">
+      <img class="hero-banner" src="./.github/assets/sdobbins-tech-banner-final.png" alt="sdobbins-tech banner">
+
+      <div class="hero-copy">
+        <div>
+          <h1>3D Printing Projects, Mods, and Practical Upgrades</h1>
+          <p>
+            A simple front door for the sdobbins-tech GitHub repo. This page highlights the best hardware projects,
+            calibration guides, and macros so people can find what they need faster and jump straight to the files on GitHub.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech" target="_blank" rel="noreferrer">Browse GitHub Repo</a>
+            <a class="button button-secondary" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/Hardware" target="_blank" rel="noreferrer">View Hardware</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h2>Quick Start</h2>
+          <ul class="hero-list">
+            <li>
+              <strong>Start with Hardware</strong>
+              <span>Printer-specific upgrades, toolheads, ducts, and printable parts.</span>
+            </li>
+            <li>
+              <strong>Use Calibrations</strong>
+              <span>Simple step-by-step guides for extrusion, PID, pressure advance, and more.</span>
+            </li>
+            <li>
+              <strong>Check Macros</strong>
+              <span>Useful Mainsail and Klipper workflow helpers plus basic setup guidance.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="hardware">
+      <div class="section-head">
+        <div>
+          <h2>Featured Hardware</h2>
+          <p>The best place to start if you want printable upgrades and project files instead of digging through folders first.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card">
+          <img class="card-media" src="./Hardware/FLSUN%20S1/images/flsun-s1-parts-banner.png" alt="FLSUN S1 hardware conversion preview">
+          <div class="card-body">
+            <span class="eyebrow">Featured Project</span>
+            <h3>FLSUN S1 Hardware</h3>
+            <p>Toolhead and hardware upgrade parts for the FLSUN S1, including the mount, ducts, and a materials list with linked parts.</p>
+            <div class="chip-row">
+              <span class="chip">Orbiter 2.5</span>
+              <span class="chip">Rapido 2 Plus UHF</span>
+              <span class="chip">CPAP Ring Duct</span>
+            </div>
+            <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/Hardware/FLSUN%20S1" target="_blank" rel="noreferrer">Open project on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="eyebrow">Downloads</span>
+            <h3>Parts and Files</h3>
+            <p>Printable files are grouped cleanly so people can download parts without guessing which folder matters.</p>
+            <div class="chip-row">
+              <span class="chip">STL files</span>
+              <span class="chip">Project readme</span>
+              <span class="chip">Build info</span>
+            </div>
+            <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/blob/main/Hardware/FLSUN%20S1/readme.md" target="_blank" rel="noreferrer">Read project overview</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="eyebrow">Materials</span>
+            <h3>Build List</h3>
+            <p>The project includes a dedicated materials list so users can see the core components, wiring, and hardware in one place.</p>
+            <div class="chip-row">
+              <span class="chip">Amazon links</span>
+              <span class="chip">Fastener specs</span>
+              <span class="chip">Wiring notes</span>
+            </div>
+            <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/blob/main/Hardware/FLSUN%20S1/Materials-List.md" target="_blank" rel="noreferrer">Open materials list</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="calibrations">
+      <div class="section-head">
+        <div>
+          <h2>Calibrations</h2>
+          <p>Beginner-friendly references for common Klipper and slicer tuning tasks.</p>
+        </div>
+      </div>
+
+      <div class="simple-grid">
+        <article class="mini-card">
+          <h3>Extruder and Flow</h3>
+          <p>Get extrusion behaving correctly before chasing other print issues.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/Calibrations" target="_blank" rel="noreferrer">View guides</a>
+        </article>
+        <article class="mini-card">
+          <h3>Pressure Advance and PID</h3>
+          <p>Clean up corners, improve consistency, and lock in stable heater behavior.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/Calibrations" target="_blank" rel="noreferrer">View guides</a>
+        </article>
+        <article class="mini-card">
+          <h3>Bed Mesh and Delta</h3>
+          <p>Better first layers and machine-specific setup guidance for dialing things in.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/Calibrations" target="_blank" rel="noreferrer">View guides</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="macros">
+      <div class="section-head">
+        <div>
+          <h2>Macros and Mainsail</h2>
+          <p>Useful macro files plus a simple guide for editing config and finding macros inside Mainsail.</p>
+        </div>
+      </div>
+
+      <div class="simple-grid">
+        <article class="mini-card">
+          <h3>Klipper Macro Files</h3>
+          <p>Quick printer workflow helpers and startup routines that are easy to drop into a config.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/tree/main/macros" target="_blank" rel="noreferrer">Browse macros</a>
+        </article>
+        <article class="mini-card">
+          <h3>Mainsail Basics</h3>
+          <p>Where to find `printer.cfg`, how includes work, and how to track down macros in a split config setup.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech/blob/main/macros/Mainsail-Config-and-Macros.md" target="_blank" rel="noreferrer">Read the guide</a>
+        </article>
+        <article class="mini-card">
+          <h3>GitHub Repo Structure</h3>
+          <p>The repo stays useful because it separates hardware, calibration docs, and macros into clear sections.</p>
+          <a class="card-link" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech" target="_blank" rel="noreferrer">Open repository</a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout">
+        <h2>Everything Still Lives on GitHub</h2>
+        <p>
+          This page is the polished front end. GitHub is still the place for files, project details, updates, and downloads.
+          If you want the newest parts, build notes, or calibration docs, jump into the repo from here.
+        </p>
+        <a class="button button-primary" href="https://github.com/sdobbins79-tech/3D-Printer-SDobbinsTech" target="_blank" rel="noreferrer">Go to GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    sdobbins-tech · 3D printer hardware, macros, and calibration references
+  </footer>
+</body>
+</html>
