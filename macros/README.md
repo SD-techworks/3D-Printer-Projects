@@ -6,9 +6,14 @@ This section is for useful macro files that support printer setup, maintenance, 
 
 ## Current files
 
-- `FLSUN S1 Start Purge.txt`
+- `FLSUN S1 Start Purge.cfg`
 - `FLSUN S1 Spiral Cooling End Print.cfg`
 - [Mainsail Config and Macros Basics](./Mainsail-Config-and-Macros.md)
+
+## Macro descriptions
+
+- `FLSUN S1 Start Purge.cfg`: Homes the printer, heats the bed first and waits for it to reach target temperature, then heats the hotend, enables the extruder, lifts Z, moves to the side purge position, and performs the initial purge before printing.
+- `FLSUN S1 Spiral Cooling End Print.cfg`: Retracts filament, lifts Z, turns off the hotend, starts the part cooling fan, runs a circular cooling orbit over the bed, turns the fan off, returns to center, and homes the printer.
 
 ## Recommended macro notes
 
