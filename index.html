@@ -209,6 +209,85 @@
       padding: 26px 0;
     }
 
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding: 10px 0 0;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 86px;
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(48, 55, 64, 0.86), rgba(28, 33, 39, 0.86)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .docs-content {
+      min-width: 0;
+    }
+
+    .docs-sidebar h2,
+    .docs-sidebar h3 {
+      margin: 0;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .docs-sidebar h2 {
+      font-size: 0.82rem;
+      color: var(--accent-2);
+    }
+
+    .docs-sidebar h3 {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .sidebar-links {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sidebar-links a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+
+    .sidebar-links a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--line);
+    }
+
+    .printer-scope {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(240, 109, 18, 0.34);
+      background: rgba(240, 109, 18, 0.08);
+    }
+
+    .printer-scope p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -304,7 +383,7 @@
 
     .simple-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
     }
 
@@ -314,6 +393,13 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+    }
+
+    .compatibility-card {
+      border-color: rgba(240, 109, 18, 0.42);
+      background:
+        linear-gradient(135deg, rgba(240, 109, 18, 0.12), rgba(255, 255, 255, 0.03)),
+        rgba(255, 255, 255, 0.03);
     }
 
     .mini-card h3 {
@@ -363,6 +449,14 @@
         grid-template-columns: 1fr;
       }
 
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-sidebar {
+        position: static;
+      }
+
       .section-head {
         align-items: start;
         flex-direction: column;
@@ -403,6 +497,7 @@
         <a href="#hardware">Hardware</a>
         <a href="#calibrations">Calibrations</a>
         <a href="#macros">Macros</a>
+        <a href="#downloads">Downloads</a>
         <a href="https://github.com/SD-techworks/3D-Printer-Projects" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </div>
@@ -445,7 +540,27 @@
       </div>
     </section>
 
-    <section id="hardware">
+    <div class="docs-layout">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div>
+          <h2>Documentation</h2>
+          <ul class="sidebar-links">
+            <li><a href="#hardware">Hardware</a></li>
+            <li><a href="#calibrations">Calibrations</a></li>
+            <li><a href="#macros">Macros</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+            <li><a href="https://github.com/SD-techworks/3D-Printer-Projects" target="_blank" rel="noreferrer">GitHub Repo</a></li>
+          </ul>
+        </div>
+
+        <div class="printer-scope">
+          <h3>Printer Scope</h3>
+          <p>Project pages and macro files should name the printer they are for. Current featured hardware and macros are for the FLSUN S1 unless a page says otherwise.</p>
+        </div>
+      </aside>
+
+      <div class="docs-content">
+        <section id="hardware">
       <div class="section-head">
         <div>
           <h2>Featured Hardware</h2>
@@ -499,7 +614,7 @@
       </div>
     </section>
 
-    <section id="calibrations">
+        <section id="calibrations">
       <div class="section-head">
         <div>
           <h2>Calibrations</h2>
@@ -526,7 +641,7 @@
       </div>
     </section>
 
-    <section id="macros">
+        <section id="macros">
       <div class="section-head">
         <div>
           <h2>Macros and Mainsail</h2>
@@ -535,6 +650,11 @@
       </div>
 
       <div class="simple-grid">
+        <article class="mini-card compatibility-card">
+          <h3>Printer Compatibility</h3>
+          <p>Current macro files are written for the FLSUN S1. Review printer model, bed limits, homing behavior, purge coordinates, and Klipper config before using them on anything else.</p>
+          <a class="card-link" href="https://github.com/SD-techworks/3D-Printer-Projects/tree/main/macros" target="_blank" rel="noreferrer">Read compatibility notes</a>
+        </article>
         <article class="mini-card">
           <h3>Klipper Macro Files</h3>
           <p>Quick printer workflow helpers and startup routines that are easy to drop into a config.</p>
@@ -553,7 +673,7 @@
       </div>
     </section>
 
-    <section>
+        <section id="downloads">
       <div class="callout">
         <h2>Everything Still Lives on GitHub</h2>
         <p>
@@ -562,7 +682,9 @@
         </p>
         <a class="button button-primary" href="https://github.com/SD-techworks/3D-Printer-Projects" target="_blank" rel="noreferrer">Go to GitHub</a>
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
   </main>
 
   <footer class="shell footer">
