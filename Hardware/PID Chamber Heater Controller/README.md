@@ -52,13 +52,13 @@ Lay out the printed enclosure, PID controller kit, SSR, heat sink, thermocouple,
 
 ### 2. Install the rear M3 heat-set inserts
 
-![Rear heat-set inserts](./images/pid-controller-02.jpg)
+![Rear heat-set inserts](./images/pid-controller-03.jpg)
 
 Install M3 heat-set inserts into the rear holes of the enclosure. Keep the inserts straight and flush so the rear hardware can fasten cleanly later.
 
 ### 3. Install the bottom M3 heat-set inserts
 
-![Bottom heat-set inserts](./images/pid-controller-03.jpg)
+![Bottom heat-set inserts](./images/pid-controller-02.jpg)
 
 Install two additional M3 heat-set inserts in the bottom of the enclosure. These are used for fastening internal components and keeping the assembly secure.
 
@@ -128,6 +128,67 @@ Before closing the enclosure, tug-check the crimped terminals, verify the SSR in
 - Confirm the thermocouple is connected to the correct PID terminals.
 - Confirm the fan controller and fan run before enabling the heater.
 - Confirm the PTC heater has forced airflow.
+
+## Basic PID Controller Setup and Use
+
+These are plain-English starter notes for someone who has never used a PID temperature controller before. Button names and menus can vary by controller, so compare this with the manual for the exact PID unit you install.
+
+### What the controller is doing
+
+The controller reads the temperature probe, compares it to the temperature you set, and turns the heater on and off through the SSR.
+
+Most controllers show two numbers:
+
+- The current temperature is what the probe is reading now.
+- The set temperature is the temperature you want it to hold.
+
+When the output light is on, the controller is asking the heater to heat. When the output light is off, the controller is not asking for heat.
+
+### First safe power-up
+
+- Start with a low temperature target for testing.
+- Keep the fan running any time the heater is allowed to turn on.
+- Stay with the controller during the first test.
+- Be ready to switch power off if the heater does not behave as expected.
+- Watch the actual temperature and make sure it rises slowly and responds normally.
+
+### Set the temperature
+
+- Press `SET` once.
+- Use the arrow buttons to change the target temperature.
+- If your controller has a shift button, use it to move between digits.
+- Press `SET` again to save the number.
+
+For first testing, use a low target temperature. Do not jump straight to the final chamber temperature until you know the wiring, fan, heater, and temperature probe are working correctly.
+
+### Teach the controller how the heater behaves
+
+Many PID controllers have an auto-tune feature. Auto-tune means the controller learns how fast your heater warms up and cools down, then saves better settings for holding temperature.
+
+Use auto-tune only after the heater, fan, and temperature probe are mounted in their real working positions.
+
+- Set a safe test temperature.
+- Start auto-tune using the button sequence for your controller.
+- Stay with the controller while it runs.
+- Expect the heater to turn on and off during the test.
+- Do not change the temperature setting while auto-tune is running.
+- When auto-tune finishes, the controller should go back to normal temperature control.
+
+If the temperature climbs too high, the fan stops, or anything smells hot, shut it off and fix the problem before trying again.
+
+### Normal use
+
+- Turn the controller on.
+- Turn the fan on and confirm airflow.
+- Set the chamber temperature you want.
+- Watch the controller during warm-up.
+- After it reaches the target temperature, make sure it can hold steady before walking away.
+
+### Shutdown
+
+- Turn the heater control off or lower the set temperature below the current chamber temperature.
+- Let the fan keep running long enough to cool the heater.
+- Turn off main power after the heater area is no longer hot.
 
 ## Coming Soon
 
