@@ -13,6 +13,7 @@ This repository is meant to be easy to browse whether you are looking for a prin
 - Hardware mods, mounts, and upgrade parts
 - Printable hardware and mounting solutions
 - Klipper macros and printer helper files
+- Software tools for Klipper printer monitoring and workflow support
 - Source and reference files when available
 
 ## Featured Areas
@@ -20,6 +21,7 @@ This repository is meant to be easy to browse whether you are looking for a prin
 - [Hardware](./Hardware): Printer-specific hardware upgrades, toolhead changes, mounts, and printed functional parts.
 - [macros](./macros): Useful Klipper and printer workflow macros for setup and day-to-day printing.
 - [Calibrations](./Calibrations): Step-by-step tuning guides for extrusion, pressure advance, PID, bed mesh, and more.
+- [Software](./Software): Downloadable tools, including Klipper Fleet Monitor for read-only multi-printer status.
 
 ## Download tips
 
